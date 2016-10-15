@@ -1,28 +1,30 @@
 
 Maintenance
 
-(1)
+(1) Master
 stop mysqld on master side
+service mysqld stop
 
-(2)
-run STOP SLAVE IO_THREAD on all slaves
-check SHOW PROCESSLIST => Has read all relay log
+(2) All slave
+run "STOP SLAVE IO_THREAD;" on all slaves
+check "SHOW PROCESSLIST;" => Has read all relay log
 
-(3)
-run STOP SLAVE RESET MASTER on new master
+(3) Only New Master
+run STOP SLAVE; 
+run RESET MASTER;
+read-only 1 => 0
 
-(4)
-run STOP SLAVE and CHANGE MASTER TO MASTER_HOST='new master IP(hostname)' on all salves except new master
-run START SLAVE
+(4) All non-master slaves
+run STOP SLAVE;
+run CHANGE MASTER TO MASTER_HOST='new master IP(hostname)', MASTER_USER='repl', MASTER_PASSWORD='repl';
+run START SLAVE;
+read-only keep 1
 
-(5)
+(5) Client Side
 change mysql configuration on application side
 
-(6)
+(6) Old Master
+add readonly 0 => 1
 "change old master as new slave"
 run  RESET MASTER
-run  CHANGE MASTER TO MASTER_HOST='new master IP(hostname)'
-
-
-
-
+run  CHANGE MASTER TO MASTER_HOST='new master IP(hostname)', MASTER_USER='repl', MASTER_PASSWORD='repl';
