@@ -25,6 +25,8 @@ run START SLAVE;
 read-only keep 1
 
 (5) Client Side
+Change DNS
+or
 change mysql configuration on application side
 
 (6) Old Master
