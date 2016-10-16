@@ -1,6 +1,7 @@
 
 (0) Pre-check
 all slaves which are master candidate has no binary log(but big-log is enabled)
+all slaves are "read-only=1"
 
 Maintenance
 
