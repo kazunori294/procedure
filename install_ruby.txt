@@ -1,0 +1,27 @@
+yum -y install gcc
+yum -y install make
+yum -y install openssl
+yum -y install openssl-devel
+yum -y install gcc-c++
+yum -y install mysql-devel
+yum -y install readline-devel
+
+vi /etc/sudoers.d/kazunori
+cd /usr/local
+git clone git://github.com/sstephenson/rbenv.git rbenv
+mkdir rbenv/shims rbenv/versions rbenv/plugins
+cd rbenv/plugins
+git clone git://github.com/sstephenson/ruby-build.git ruby-build
+cd ruby-build
+./install.sh
+cd /usr/local
+echo 'export RBENV_ROOT="/usr/local/rbenv"'     >> /etc/profile.d/rbenv.sh
+echo 'export PATH="/usr/local/rbenv/bin:$PATH"' >> /etc/profile.d/rbenv.sh
+echo 'eval "$(rbenv init -)"'                   >> /etc/profile.d/rbenv.sh
+source /etc/profile.d/rbenv.sh
+echo $PATH
+rbenv install -v 2.3.1
+rbenv versions
+rbenv global 2.3.1
+rbenv rehash
+rbenv versions
