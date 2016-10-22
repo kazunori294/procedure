@@ -1,0 +1,65 @@
+sudo mkdir /rails
+yum install -y sqlite-devel ImageMagick ImageMagick-devel
+
+cd /rails
+chmod 777 -R rails/
+rails new myshop --skip-bundle
+
+vi Gemfile
+gem 'solidus'
+gem 'solidus_auth_devise'
+gem 'mysql2'
+gem 'therubyracer', platforms: :ruby
+
+bundle install --path vendor/bundler
+
+vi config/database.yml 
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: myshop_development
+  pool: 5
+  username: xxx
+  password: xxx
+  host: xxxxx
+ 
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: myshop_production
+  pool: 5
+  username: xxxx
+  password: xxxx
+  host: xxxxxx
+
+Create DB
+create database myshop_production;
+create database myshop_development;
+
+show variables like "chara%";
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | utf8                       |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | utf8                       |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+
+[mysqld]
+character-set-server=utf8
+
+[client]
+default-character-set=utf8
+
+bundle exec rails g spree:install
+bundle exec rake db:migrate
+
+Email [admin@example.com]: 
+Password [test123]: 
