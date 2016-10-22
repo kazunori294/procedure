@@ -63,3 +63,7 @@ bundle exec rake db:migrate
 
 Email [admin@example.com]: 
 Password [test123]: 
+
+
+
+bundle exec rails s -p 3000 -b 0.0.0.0
