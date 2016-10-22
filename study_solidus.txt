@@ -16,6 +16,7 @@ http://blog.onk.ninja/2014/12/02/mountable_engine
 http://xxxxxx/ => これで　"Spree::Core::Engine" にアクセスできるようになる
 
 QQQQQQQQQ - どうやって/rails/myshop/vendor/bundler/ruby/2.3.0/gems/solidus_frontend-2.0.0/config/routes.rb　を読み込んでいるか
+/rails/myshop/vendor/bundler/ruby/2.3.0/gems　が自動的に読み込まれる?? インストール gem "solidus"で設定されている??
 
 #############################################################################################
 cat /rails/myshop/vendor/bundler/ruby/2.3.0/gems/solidus_frontend-2.0.0/config/routes.rb
