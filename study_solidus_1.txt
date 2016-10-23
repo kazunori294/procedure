@@ -1,4 +1,7 @@
 http://maeharin.hatenablog.com/entry/20130104/p1
+http://railsdoc.com/references/config
+http://qiita.com/kenzan100/items/73b8571b78d002503d95
+http://railsguides.jp/initialization.html
 ----
 cat config/application.rb 
 require_relative 'boot'
